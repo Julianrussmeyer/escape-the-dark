@@ -1,44 +1,70 @@
 class Player {
   constructor() {
-    this.height = 100;
-    this.width = 100;
-    this.color = "pink";
-    this.x = 100;
-    this.y = 100;
-    this.speed = 10;
+    this.height = 30;
+    this.width = 30;
+    this.x = game.width / 2;
+    this.y = game.height / 2;
+    this.speed = 5;
+
+    this.torchHeight = 120;
+    this.torchWidth = 120;
 
     console.log("New Player enters the new game");
   }
 
-  renderPlayer() {
-    const playerBody = document.createElement("div");
-    playerBody.style.height = this.height + "px";
-    playerBody.style.width = this.width + "px";
-    playerBody.style.background = this.color;
-    playerBody.style.position = "absolute";
-    playerBody.style.left = this.x + "px";
-    playerBody.style.top = this.y + "px";
-    playerBody.classList.add("player-body");
+  renderTorch(playerX, playerY) {
+    this.torchElement = document.createElement("div");
+    this.torchElement.style.height = this.torchHeight + "px";
+    this.torchElement.style.width = this.torchWidth + "px";
+    this.torchElement.style.position = "absolute";
+    this.torchElement.style.left = playerX + "px";
+    this.torchElement.style.top = playerY + "px";
+    this.torchElement.classList.add("player-torch");
 
-    document.querySelector("#game-screen").appendChild(playerBody);
+    document.querySelector("#game-screen").appendChild(this.torchElement);
+  }
+
+  renderPlayer() {
+    this.element = document.createElement("div");
+    this.element.style.height = this.height + "px";
+    this.element.style.width = this.width + "px";
+    this.element.style.position = "absolute";
+    this.element.style.left = this.x + "px";
+    this.element.style.top = this.y + "px";
+    this.element.classList.add("player-body");
+
+    document.querySelector("#game-screen").appendChild(this.element);
+    this.renderTorch(this.x, this.y);
   }
 
   move(direction) {
-    if (direction === "ArrowRight"){
-        this.x += this.speed
-        console.log("Going right, sir")
-    } 
-    if(direction === "ArrowLeft") {
-        this.x -= this.speed
-        console.log("Going left, sir")
-    } 
-    if(direction === "ArrowUp"){
-        this.y -= this.speed
-        console.log("Going up, sir")
+    if (direction === "ArrowRight") {
+      if (this.x >= game.width - this.width) {
+        return this.x;
+      } else {
+        this.x += this.speed;
+      }
     }
-    if(direction === "ArrowDown"){
-        this.y += this.speed
-        console.log("Going down, sir")
+    if (direction === "ArrowLeft") {
+      if (this.x <= 0) {
+        return this.x;
+      } else {
+        this.x -= this.speed;
+      }
+    }
+    if (direction === "ArrowUp") {
+      if (this.y <= 0) {
+        return this.y;
+      } else {
+        this.y -= this.speed;
+      }
+    }
+    if (direction === "ArrowDown") {
+      if (this.y >= game.height - this.height) {
+        return this.y;
+      } else {
+        this.y += this.speed;
+      }
     }
   }
 
@@ -46,5 +72,43 @@ class Player {
     const playerBody = document.querySelector(".player-body");
     playerBody.style.left = this.x + "px";
     playerBody.style.top = this.y + "px";
+
+    const playerTorch = document.querySelector(".player-torch");
+    playerTorch.style.left =
+      this.x + this.width / 2 - this.torchWidth / 2 + "px";
+    playerTorch.style.top =
+      this.y + this.height / 2 - this.torchHeight / 2 + "px";
+  }
+
+  foundKey(key){
+    const torchRect = this.torchElement.getBoundingClientRect();
+    const keyRect = key.element.getBoundingClientRect();
+
+    if (
+      torchRect.left < keyRect.right &&
+      torchRect.right > keyRect.left &&
+      torchRect.top < keyRect.bottom &&
+      torchRect.bottom > keyRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  collectedKey(key) {
+    const playerRect = this.element.getBoundingClientRect();
+    const keyRect = key.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < keyRect.right &&
+      playerRect.right > keyRect.left &&
+      playerRect.top < keyRect.bottom &&
+      playerRect.bottom > keyRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

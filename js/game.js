@@ -4,8 +4,8 @@ class Game {
     this.gameScreen = document.querySelector("#game-screen");
     this.endScreen = document.querySelector("#end-screen");
     this.gameContainer = document.querySelector("#game-container");
-    this.height = 600;
-    this.width = 500;
+    this.height = 1080;
+    this.width = 1920;
   }
 
   start() {
@@ -28,6 +28,9 @@ class Game {
     this.intervalID = setInterval(() => {
       this.gameLoop();
     }, 1000 / 60);
+
+    this.key = new Key()
+    this.key.placeKey()
   }
 
   gameLoop() {
@@ -44,6 +47,20 @@ class Game {
       this.player.move("ArrowDown");
     }
     this.player.render();
+
+    const foundKey = this.player.foundKey(this.key)
+    if(foundKey){
+      console.log("Key found!!")
+      this.key.element.style.visibility = "visible";
+    } else {
+      this.key.element.style.visibility = "hidden";
+    }
+
+    const collectedKey = this.player.collectedKey(this.key)
+    if (collectedKey){
+      this.end()
+    }
+
   }
 
   end() {

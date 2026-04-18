@@ -15,5 +15,4 @@ endButton.addEventListener("click", () => {
 
 restartButton.addEventListener("click", () => {
     window.location.reload();
-    console.log("Reload");
 });
