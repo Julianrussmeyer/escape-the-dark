@@ -2,8 +2,8 @@ class Player {
   constructor() {
     this.height = 30;
     this.width = 30;
-    this.x = game.width / 2;
-    this.y = game.height / 2;
+    this.x = game.screenWidth / 2;
+    this.y = game.screenHeight / 2;
     this.speed = 5;
 
     this.torchHeight = 120;
@@ -39,7 +39,7 @@ class Player {
 
   move(direction) {
     if (direction === "ArrowRight") {
-      if (this.x >= game.width - this.width) {
+      if (this.x >= game.screenWidth - this.width) {
         return this.x;
       } else {
         this.x += this.speed;
@@ -60,7 +60,7 @@ class Player {
       }
     }
     if (direction === "ArrowDown") {
-      if (this.y >= game.height - this.height) {
+      if (this.y >= game.screenHeight - this.height) {
         return this.y;
       } else {
         this.y += this.speed;

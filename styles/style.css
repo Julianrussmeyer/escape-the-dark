@@ -3,18 +3,25 @@ body {
     text-align: center;
     font-family: "Montserrat", sans-serif;
     color: rgb(232, 232, 232);
-    background: rgb(2, 1, 28);
+    background-image: url("../img/bg-wall.png");
+    /* background-color: rgba(18, 4, 0, 0.8); */
+    background-color: rgba(0, 0, 0, 0.8);
+    background-blend-mode: darken;
 }
 
 
 #start-screen {
     display: block;
+    
 }
 
 #game-screen {
     position: relative;
     display: none;
-    background:  rgb(2, 1, 28);
+    background-image: url("../img/bg-wall.png");
+    background-color: rgba(0, 0, 0, 0.8);
+    background-blend-mode: darken;
+    border-style: outset;
 }
 
 #end-screen {
@@ -27,7 +34,7 @@ body {
 }
 
 .key-body {
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0);
     visibility: hidden;
 }
 
@@ -37,3 +44,4 @@ background: #ffe500;
 background: radial-gradient(circle, rgba(255, 187, 0, 10.8) 0%, rgba(255, 229, 0, 0) 70%);
 
 }
+

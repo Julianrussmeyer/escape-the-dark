@@ -5,7 +5,7 @@ const restartButton = document.querySelector("#restart-button");
 let game;
 
 startButton.addEventListener("click", () => {
-    game = new Game();
+    game = new Game(800,600);
     game.start();
 });
 
