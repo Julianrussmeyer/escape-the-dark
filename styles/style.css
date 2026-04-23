@@ -1,10 +1,9 @@
 body {
     padding: 32px 8px;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "New Rocker", sans-serif;
     color: rgb(232, 232, 232);
     background-image: url("../img/bg-wall.png");
-    /* background-color: rgba(18, 4, 0, 0.8); */
     background-color: rgba(0, 0, 0, 0.8);
     background-blend-mode: darken;
 }
@@ -18,10 +17,17 @@ body {
 #game-screen {
     position: relative;
     display: none;
+}
+
+#game-map {
+    border-radius: 20px;
+    position: relative;
+    margin: 32px auto;
     background-image: url("../img/bg-wall.png");
     background-color: rgba(0, 0, 0, 0.8);
     background-blend-mode: darken;
     border-style: outset;
+    overflow: hidden;
 }
 
 #end-screen {
@@ -30,7 +36,6 @@ body {
 
 .player-body {
     border-radius: 50%;
-    background: rgba(255, 187, 0)
 }
 
 .key-body {
@@ -40,8 +45,18 @@ body {
 
 .player-torch {
     border-radius: 50%;
-background: #ffe500;
-background: radial-gradient(circle, rgba(255, 187, 0, 10.8) 0%, rgba(255, 229, 0, 0) 70%);
+    background: #ffe500;
+    background: radial-gradient(circle, rgba(255, 187, 0, 10.8) 0%, rgba(255, 229, 0, 0) 75%);
 
 }
 
+button {
+    min-width: 100px;
+    font-family: monospace;
+    padding: 10px 15px;
+    border-radius: 10px; 
+    border-style: groove;
+    border-color:rgb(70, 174, 10);
+    background-color: rgb(192, 0, 0);
+    color: rgb(255, 255, 255);
+}

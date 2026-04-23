@@ -21,10 +21,11 @@ class Player {
     this.torchElement.style.top = playerY + "px";
     this.torchElement.classList.add("player-torch");
 
-    document.querySelector("#game-screen").appendChild(this.torchElement);
+    document.querySelector("#game-map").appendChild(this.torchElement);
   }
 
   renderPlayer() {
+    this.renderTorch(this.x, this.y);
     this.element = document.createElement("div");
     this.element.style.height = this.height + "px";
     this.element.style.width = this.width + "px";
@@ -32,9 +33,14 @@ class Player {
     this.element.style.left = this.x + "px";
     this.element.style.top = this.y + "px";
     this.element.classList.add("player-body");
+    this.element.innerHTML = `
+      <div>
+      <img src="../img/link_straight.png" style="width:100%;height:100%;" alt="Key Image"/>
+      </div>
+      `;
 
-    document.querySelector("#game-screen").appendChild(this.element);
-    this.renderTorch(this.x, this.y);
+    document.querySelector("#game-map").appendChild(this.element);
+
   }
 
   move(direction) {

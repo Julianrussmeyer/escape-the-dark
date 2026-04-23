@@ -2,18 +2,19 @@ class Game {
   constructor(screenWidth, screenHeight) {
     this.startScreen = document.querySelector("#start-screen");
     this.gameScreen = document.querySelector("#game-screen");
+    this.gameMap = document.querySelector("#game-map")
     this.endScreen = document.querySelector("#end-screen");
-    this.gameContainer = document.querySelector("#game-container");
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
   }
 
   start() {
-    this.gameScreen.style.width = this.screenWidth + "px";
-    this.gameScreen.style.height = this.screenHeight + "px";
+    this.gameMap.style.width = this.screenWidth + "px";
+    this.gameMap.style.height = this.screenHeight + "px";
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "block";
     this.gameScreen.style.margin = "auto";
+    console.log("Start Button")
 
     this.player = new Player();
     this.player.renderPlayer();
@@ -29,7 +30,7 @@ class Game {
       this.gameLoop();
     }, 1000 / 60);
 
-    this.key = new Key(this.screenWidth, this.screenHeigh)
+    this.key = new Key(this.screenWidth, this.screenHeight)
     this.key.placeKey()
   }
 
