@@ -26,18 +26,15 @@ class Player {
 
   renderPlayer() {
     this.renderTorch(this.x, this.y);
-    this.element = document.createElement("div");
+    this.element = document.createElement("img");
     this.element.style.height = this.height + "px";
     this.element.style.width = this.width + "px";
     this.element.style.position = "absolute";
     this.element.style.left = this.x + "px";
     this.element.style.top = this.y + "px";
     this.element.classList.add("player-body");
-    this.element.innerHTML = `
-      <div>
-      <img src="../img/link_straight.png" style="width:100%;height:100%;" alt="Key Image"/>
-      </div>
-      `;
+    this.element.src = "./img/link_down.png"
+    this.element.alt = "Player Image"
 
     document.querySelector("#game-map").appendChild(this.element);
 
@@ -49,6 +46,7 @@ class Player {
         return this.x;
       } else {
         this.x += this.speed;
+        this.element.src = "./img/link_right.png"
       }
     }
     if (direction === "ArrowLeft") {
@@ -56,6 +54,7 @@ class Player {
         return this.x;
       } else {
         this.x -= this.speed;
+        this.element.src = "./img/link_left.png"
       }
     }
     if (direction === "ArrowUp") {
@@ -63,6 +62,7 @@ class Player {
         return this.y;
       } else {
         this.y -= this.speed;
+        this.element.src = "./img/link_up.png"
       }
     }
     if (direction === "ArrowDown") {
@@ -70,6 +70,7 @@ class Player {
         return this.y;
       } else {
         this.y += this.speed;
+        this.element.src = "./img/link_down.png"
       }
     }
   }

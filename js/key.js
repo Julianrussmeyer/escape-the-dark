@@ -21,7 +21,7 @@ class Key {
     this.element.classList.add("key-body");
     this.element.innerHTML = `
         <div>
-        <img src="../img/key.png" style="width:100%;height:100%;" alt="Key Image"/>
+        <img src="./img/key.png" style="width:100%;height:100%;" alt="Key Image"/>
         </div>
     `;
 

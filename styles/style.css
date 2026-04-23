@@ -34,10 +34,6 @@ body {
     display: none;
 }
 
-.player-body {
-    border-radius: 50%;
-}
-
 .key-body {
     background: rgba(255, 255, 255, 0);
     visibility: hidden;
