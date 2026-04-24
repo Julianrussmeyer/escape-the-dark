@@ -10,25 +10,48 @@
     <!-- #start-screen  -->
     <div>
       <div id="start-screen">
-        <h1>Escape The Dark</h1>
-        <button id="start-button">Start Game</button>
+        <div id="title">
+          <h1>Escape The Dark</h1>
+          <p id="subheadline">A Browser Game by Julian Rußmeyer</p>
+        </div>
+        <div id="instructions">
+          <img
+            src="./img/arrow_keys.png"
+            alt="Arrow Keys"
+            width="200"
+            height="full"
+          />
+          <p>
+            Use the Arrow Keys to find a Key, unlock the door and escape the
+            darkness. Watch out for ghosts!
+          </p>
+          <button id="start-button">Start Game</button>
+        </div>
       </div>
 
       <!-- #game-screen  -->
       <div id="game-screen">
         <h1>Escape The Dark</h1>
-        <button id="end-button">End</button>
+        <button id="restart-button">Restart</button>
         <div id="game-map">
+          <div id="darkness-overlay"></div>
         </div>
       </div>
 
       <!-- #end-screen  -->
       <div id="end-screen">
         <h1>Congrats, you escaped!</h1>
-        <button id="restart-button">Restart</button>
+        <button id="end-restart-button">Restart</button>
+      </div>
+
+      <!-- #death-screen  -->
+      <div id="death-screen">
+        <h1>You died.</h1>
+        <button id="death-restart-button">Restart</button>
       </div>
     </div>
-
+    <script type="text/javascript" src="js/ghost.js"></script>
+    <script type="text/javascript" src="js/door.js"></script>
     <script type="text/javascript" src="js/key.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/game.js"></script>

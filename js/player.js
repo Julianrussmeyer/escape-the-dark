@@ -5,6 +5,7 @@ class Player {
     this.x = game.screenWidth / 2;
     this.y = game.screenHeight / 2;
     this.speed = 5;
+    this.hasKey = false;
 
     this.torchHeight = 120;
     this.torchWidth = 120;
@@ -32,12 +33,12 @@ class Player {
     this.element.style.position = "absolute";
     this.element.style.left = this.x + "px";
     this.element.style.top = this.y + "px";
+    this.element.style.zIndex = "10";
     this.element.classList.add("player-body");
-    this.element.src = "./img/link_down.png"
-    this.element.alt = "Player Image"
+    this.element.src = "./img/link_down.png";
+    this.element.alt = "Player Image";
 
     document.querySelector("#game-map").appendChild(this.element);
-
   }
 
   move(direction) {
@@ -46,7 +47,7 @@ class Player {
         return this.x;
       } else {
         this.x += this.speed;
-        this.element.src = "./img/link_right.png"
+        this.element.src = "./img/link_right.png";
       }
     }
     if (direction === "ArrowLeft") {
@@ -54,7 +55,7 @@ class Player {
         return this.x;
       } else {
         this.x -= this.speed;
-        this.element.src = "./img/link_left.png"
+        this.element.src = "./img/link_left.png";
       }
     }
     if (direction === "ArrowUp") {
@@ -62,7 +63,7 @@ class Player {
         return this.y;
       } else {
         this.y -= this.speed;
-        this.element.src = "./img/link_up.png"
+        this.element.src = "./img/link_up.png";
       }
     }
     if (direction === "ArrowDown") {
@@ -70,7 +71,7 @@ class Player {
         return this.y;
       } else {
         this.y += this.speed;
-        this.element.src = "./img/link_down.png"
+        this.element.src = "./img/link_down.png";
       }
     }
   }
@@ -85,17 +86,22 @@ class Player {
       this.x + this.width / 2 - this.torchWidth / 2 + "px";
     playerTorch.style.top =
       this.y + this.height / 2 - this.torchHeight / 2 + "px";
+
+    const overlay = document.querySelector("#darkness-overlay");
+    const torchCenterX = this.x + this.width / 2;
+    const torchCenterY = this.y + this.height / 2;
+    overlay.style.background = `radial-gradient(circle at ${torchCenterX}px ${torchCenterY}px, rgba(0, 0, 0, 0.00) 60px, rgba(0, 0, 0, 0.4) 80px, rgba(0, 0, 0, 0.60) 190px, rgba(0, 0, 0, 0.60) 100%)`;
   }
 
-  foundKey(key){
+  isInTorchRange(target) {
     const torchRect = this.torchElement.getBoundingClientRect();
-    const keyRect = key.element.getBoundingClientRect();
+    const targetRect = target.element.getBoundingClientRect();
 
     if (
-      torchRect.left < keyRect.right &&
-      torchRect.right > keyRect.left &&
-      torchRect.top < keyRect.bottom &&
-      torchRect.bottom > keyRect.top
+      torchRect.left < targetRect.right &&
+      torchRect.right > targetRect.left &&
+      torchRect.top < targetRect.bottom &&
+      torchRect.bottom > targetRect.top
     ) {
       return true;
     } else {
@@ -103,19 +109,20 @@ class Player {
     }
   }
 
-  collectedKey(key) {
+  isColliding(target) {
     const playerRect = this.element.getBoundingClientRect();
-    const keyRect = key.element.getBoundingClientRect();
+    const targetRect = target.element.getBoundingClientRect();
 
     if (
-      playerRect.left < keyRect.right &&
-      playerRect.right > keyRect.left &&
-      playerRect.top < keyRect.bottom &&
-      playerRect.bottom > keyRect.top
+      playerRect.left < targetRect.right &&
+      playerRect.right > targetRect.left &&
+      playerRect.top < targetRect.bottom &&
+      playerRect.bottom > targetRect.top
     ) {
       return true;
     } else {
       return false;
     }
   }
+
 }

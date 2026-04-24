@@ -29,4 +29,8 @@ class Key {
     console.log(`A key was hidden at X:${this.x} Y:${this.y}`)
     }
 
+    keyPickedUp(){
+        this.element.remove()
+    }
+
 }

@@ -1,6 +1,7 @@
 const startButton = document.querySelector("#start-button");
-const endButton = document.querySelector("#end-button");
 const restartButton = document.querySelector("#restart-button");
+const endRestartButton = document.querySelector("#end-restart-button");
+const deathRestartButton = document.querySelector("#death-restart-button");
 
 let game;
 
@@ -9,10 +10,14 @@ startButton.addEventListener("click", () => {
     game.start();
 });
 
-endButton.addEventListener("click", () => {
-    game.end();
+restartButton.addEventListener("click", () => {
+    window.location.reload();
 });
 
-restartButton.addEventListener("click", () => {
+endRestartButton.addEventListener("click", () => {
+    window.location.reload();
+});
+
+deathRestartButton.addEventListener("click", () => {
     window.location.reload();
 });
