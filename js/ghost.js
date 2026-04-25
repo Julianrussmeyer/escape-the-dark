@@ -6,7 +6,7 @@ class Ghost {
     this.width = 70;
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
-    this.speed = 1;
+    this.speed = 2;
     this.direction = "down";
   }
 
@@ -21,6 +21,7 @@ class Ghost {
     this.element.style.left = this.x + "px";
     this.element.style.top = this.y + "px";
     this.element.classList.add("ghost");
+    this.element.style.zIndex = "0";
     this.element.src = "./img/ghost.png";
     this.element.alt = "Ghost Image";
 

@@ -90,7 +90,8 @@ class Player {
     const overlay = document.querySelector("#darkness-overlay");
     const torchCenterX = this.x + this.width / 2;
     const torchCenterY = this.y + this.height / 2;
-    overlay.style.background = `radial-gradient(circle at ${torchCenterX}px ${torchCenterY}px, rgba(0, 0, 0, 0.00) 60px, rgba(0, 0, 0, 0.4) 80px, rgba(0, 0, 0, 0.60) 190px, rgba(0, 0, 0, 0.60) 100%)`;
+    overlay.style.zIndex = "5";
+    overlay.style.background = `radial-gradient(circle at ${torchCenterX}px ${torchCenterY}px, rgba(0, 0, 0, 0.00) 60px, rgba(0, 0, 0, 0.4) 80px, rgba(0, 0, 0, 1) 190px, rgba(0, 0, 0, 1) 100%)`;
   }
 
   isInTorchRange(target) {

@@ -11,6 +11,7 @@ class Game {
   }
 
   start() {
+    this.backgroundMusic.volume = 0.35;
     this.backgroundMusic.play();
     this.gameMap.style.width = this.screenWidth + "px";
     this.gameMap.style.height = this.screenHeight + "px";
@@ -98,7 +99,7 @@ class Game {
       if (this.player.isInTorchRange(ghost)) {
         ghost.element.style.visibility = "visible";
       } else {
-        ghost.element.style.visibility = "hidden";
+        ghost.element.style.visibility = "visible";
       }
     });
 

@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "New Rocker";
+  src: url("../fonts/NewRocker-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
 body {
     padding: 32px 8px;
     text-align: center;
@@ -59,8 +65,8 @@ h1 {
             rgba(0, 0, 0, 0.00) 80px,
             rgba(0, 0, 0, 0.18) 130px,
             rgba(0, 0, 0, 0.70) 190px,
-            rgba(0, 0, 0, 0.85) 260px,
-            rgba(0, 0, 0, 0.85) 100%);
+            rgba(0, 0, 0, 1) 260px,
+            rgba(0, 0, 0, 1) 100%);
 }
 
 #end-screen {
